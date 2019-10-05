@@ -1103,7 +1103,7 @@ class Client {
     	$ch = curl_init();
     	$query = '';
 
-    	if (count($params)) {
+    	if (!empty($params)) {
             $query = '?' . http_build_query($params);
     	}
 
