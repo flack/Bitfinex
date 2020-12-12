@@ -1009,14 +1009,13 @@ class Client {
     * @return json
     */
     private function curl_error($ch) {
-    	if ($errno = curl_errno($ch)) {
+        $output = ['error' => true];
+        if ($errno = curl_errno($ch)) {
             $error_message = curl_strerror($errno);
-            echo "cURL error ({$errno}):\n {$error_message}";
-
-            return FALSE;
+            $output['error_description'] = "cURL error ({$errno}):\n {$error_message}";
     	}
 
-    	return TRUE;
+    	return $output;
     }
 
     /**
@@ -1084,10 +1083,7 @@ class Client {
     	{
             return $this->curl_error($ch);
     	}
-    	else
-    	{
-            return $this->output($result, $this->is_bitfinex_error($ch));
-    	}
+        return $this->output($result, $this->is_bitfinex_error($ch));
     }
 
     /**
@@ -1120,10 +1116,7 @@ class Client {
     	{
             return $this->curl_error($ch);
     	}
-    	else
-    	{
-            return $this->output($result, $this->is_bitfinex_error($ch));
-    	}
+        return $this->output($result, $this->is_bitfinex_error($ch));
     }
 }
 
