@@ -645,7 +645,7 @@ class Client {
     * @param string $direction      Either “lend” or “loan”.
     * @return mixed
     */
-    public function new_offer($currency = 'BTC', $amount, $rate, $period, $direction = 'lend') {
+    public function new_offer($currency, $amount, $rate, $period, $direction = 'lend') {
     	$request = $this->endpoint('offer', 'new');
 
     	$data = array(
